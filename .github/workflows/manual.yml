@@ -51,17 +51,13 @@ jobs:
         run: terraform validate
               # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
 
-    #  - name: terraform scan
-     #   uses: accurics/terrascan-action@main
-      #  with:
-       #   iac_type: 'terraform'
        
       - name: terraform plan
-        run: terraform plan
+        run: terraform plan -var-file=variables.tfvars
        
       - name: terraform apply
-        run: terraform apply -auto-approve
+        run: terraform apply -var-file=variables.tfvars -auto-approve
         
       - name: terraform destroy
-        run: terraform destroy    
+        run: terraform destroy -var-file=variables.tfvars -auto-approve    
         
