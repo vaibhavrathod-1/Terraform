@@ -55,3 +55,6 @@ jobs:
      #   uses: accurics/terrascan-action@main
       #  with:
        #   iac_type: 'terraform'
+       
+      - name: terraform apply
+        run: terraform apply -auto-approve
