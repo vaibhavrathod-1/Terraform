@@ -27,6 +27,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Codebase
         uses: actions/checkout@v2
+        
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+         role-to-assume: arn:aws:iam::779527285137:role/AWSdevopscerttaskrole
+         aws-region: us-east-1
 
       - name: setup terraform
         uses: hashicorp/setup-terraform@v1
