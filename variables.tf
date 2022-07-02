@@ -6,6 +6,11 @@ variable "subnet_azs" {
   default = ["us-east-1a", "us-east-1b"]
 }
 
+variable "ec2_ssh_key" {
+  default = "eks-cluster"
+}
+
+
 variable "role_arn" {
   default = "arn:aws:iam::779527285137:role/AWSdevopscerttaskrole"
 }
