@@ -71,7 +71,7 @@ resource "aws_lb" "test" {
   subnet_mapping {
     subnet_id = aws_subnet.private_subnet.id
   }
-  enable_deletion_protection = true
+  enable_deletion_protection = false
   access_logs {
     bucket  = aws_s3_bucket.bucket.id
     enabled = true
