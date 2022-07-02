@@ -12,7 +12,10 @@ resource "aws_eks_node_group" "node_group" {
   node_group_name = "eks_node_group"
   node_role_arn   = var.role_arn
   subnet_ids      = var.subnet_ids
-  ec2_ssh_key_name = var.ec2_ssh_key_name
+  
+  remote_access {
+  ec2_ssh_key = var.ec2_ssh_key
+}
 
   scaling_config {
     desired_size = 1
