@@ -6,7 +6,7 @@ variable "subnet_azs" {
   default = ["us-east-1a", "us-east-1b"]
 }
 
-variable "ec2_ssh_key" {
+variable "key_name" {
   default = "eks-cluster"
 }
 
