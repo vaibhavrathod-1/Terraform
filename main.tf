@@ -33,8 +33,6 @@ resource "aws_eks_node_group" "node_group" {
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket
 }
-55
-  enable_deletion_protection = false
 
 resource "aws_s3_bucket_acl" "example" {
   bucket = aws_s3_bucket.bucket.id
