@@ -46,11 +46,11 @@ resource "aws_lb" "test" {
   load_balancer_type = var.lb_type
   #subnets            = ["aws_subnet.public_subnet.id","aws_subnet.private_subnet.id"]
   subnet_mapping {
-    subnet_id = var.public_subnet.id
+    subnet_id = var.public_subnet
   }
 
   subnet_mapping {
-    subnet_id = var.private_subnet.id
+    subnet_id = var.private_subnet
   }
   access_logs {
     bucket  = aws_s3_bucket.bucket.id
