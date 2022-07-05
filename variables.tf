@@ -57,29 +57,9 @@ variable "vpn_cidr_block" {
 }
 
 variable "public_subnet" {
-  default = "10.0.1.0/24"
+  default = "subnet-0175eb38117876d57"
 }
 
 variable "private_subnet" {
-  default = "10.0.2.0/24"
+  default = "subnet-00a771c328055bff2"
 }
-
-
-
-variable "private_subnet_availability_zone" {
-  type = string
-  default = "us-east-1a"
-
-}
-
-variable "public_subnet_availability_zone" {
-  type = string
-  default = "us-east-1b"
-
-}
-
-
-
-
-
-
