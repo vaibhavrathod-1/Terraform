@@ -33,35 +33,14 @@ resource "aws_eks_node_group" "node_group" {
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket
 }
+55
+  enable_deletion_protection = false
 
 resource "aws_s3_bucket_acl" "example" {
   bucket = aws_s3_bucket.bucket.id
   acl    = var.acl
 }
 
-resource "aws_vpc" "main" {
-  cidr_block = var.vpn_cidr_block
-}
-
-resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.main.id
-
-  tags = {
-    Name = "main"
-  }
-}
-
-resource "aws_subnet" "public_subnet" {
-  vpc_id            = aws_vpc.main.id
-  cidr_block        = var.public_subnet
-  availability_zone = var.public_subnet_availability_zone
-}
-
-resource "aws_subnet" "private_subnet" {
-  vpc_id            = aws_vpc.main.id
-  cidr_block        = var.private_subnet
-  availability_zone = var.private_subnet_availability_zone
-}
 
 resource "aws_lb" "test" {
   name               = var.aws_lb_name
@@ -69,19 +48,15 @@ resource "aws_lb" "test" {
   load_balancer_type = var.lb_type
   #subnets            = ["aws_subnet.public_subnet.id","aws_subnet.private_subnet.id"]
   subnet_mapping {
-    subnet_id = aws_subnet.public_subnet.id
+    subnet_id = var.public_subnet.id
   }
 
   subnet_mapping {
-    subnet_id = aws_subnet.private_subnet.id
+    subnet_id = var.private_subnet.id
   }
-  enable_deletion_protection = false
   access_logs {
     bucket  = aws_s3_bucket.bucket.id
     enabled = true
-  }
-  tags = {
-    Environment = "production"
   }
 }
 
