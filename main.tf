@@ -1,6 +1,6 @@
 resource "aws_eks_cluster" "cluster_project1" {
   name     = "vaibhav"
-  role_arn = var.role_arn
+  role_arn = "arn:aws:iam::787631830319:role/eksClusterRole"
 
   vpc_config {
     subnet_ids = var.subnet_ids
@@ -13,9 +13,7 @@ resource "aws_eks_node_group" "node_group" {
   node_role_arn   = var.role_arn
   subnet_ids      = var.subnet_ids
   
-  remote_access {
-  ec2_ssh_key = var.ec2_ssh_key
-}
+ 
 
   scaling_config {
     desired_size = 1
