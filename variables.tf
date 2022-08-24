@@ -1,10 +1,8 @@
 variable "subnet_ids" {
-  default = ["subnet-00a771c328055bff2", "subnet-0175eb38117876d57"]
+  default = ["subnet-051247d5d1d9ee57e", "subnet-0407366a35afa8797"]
 }
 
-variable "subnet_azs" {
-  default = ["us-east-1a", "us-east-1b"]
-}
+
 
 variable "ec2_ssh_key" {
   default = "eks-cluster"
@@ -12,7 +10,7 @@ variable "ec2_ssh_key" {
 
 
 variable "role_arn" {
-  default = "arn:aws:iam::779527285137:role/AWSdevopscerttaskrole"
+  default = "arn:aws:iam::787631830319:role/eksClusterRole"
 }
 variable "name" {
   default = "AWSdevopscerttaskrole"
@@ -23,7 +21,7 @@ variable "cidr_block" {
 }
 
 variable "vpc_id" {
-  default = "vpc-0b0bca52959e39132"
+  default = "vpc-079d5a058c5a7ea82"
 }
 
 variable "instance_types" {
@@ -31,35 +29,8 @@ variable "instance_types" {
 }
 
 
-variable "bucket" {
-  description = "bucketname"
-  type        = string
-  default = "my-tf-test-arul"
-}
-variable "acl" {
-  type = string
-  default = "public-read-write"
-}
-variable "aws_lb_name" {
-  type = string
-  default = "test-lb-tf1"
-
-}
-variable "lb_type" {
-  type = string
-  default = "application"
-
-}
-
 variable "vpn_cidr_block" {
   default = "10.0.0.0/16"
 
 }
 
-variable "public_subnet" {
-  default = "subnet-0175eb38117876d57"
-}
-
-variable "private_subnet" {
-  default = "subnet-00a771c328055bff2"
-}

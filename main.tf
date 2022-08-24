@@ -1,5 +1,5 @@
 resource "aws_eks_cluster" "cluster_project1" {
-  name     = "cluster_project1"
+  name     = "vaibhav"
   role_arn = var.role_arn
 
   vpc_config {
@@ -29,33 +29,7 @@ resource "aws_eks_node_group" "node_group" {
   }
 }
 
-# add the s3 with alb
-resource "aws_s3_bucket" "bucket" {
-  bucket = var.bucket
-}
-
-resource "aws_s3_bucket_acl" "example" {
-  bucket = aws_s3_bucket.bucket.id
-  acl    = var.acl
-}
 
 
-resource "aws_lb" "test" {
-  name               = var.aws_lb_name
-  internal           = false
-  load_balancer_type = var.lb_type
-  #subnets            = ["aws_subnet.public_subnet.id","aws_subnet.private_subnet.id"]
-  subnet_mapping {
-    subnet_id = var.public_subnet
-  }
-
-  subnet_mapping {
-    subnet_id = var.private_subnet
-  }
-  access_logs {
-    bucket  = aws_s3_bucket.bucket.id
-    enabled = true
-  }
-}
 
 
