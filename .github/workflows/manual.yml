@@ -3,6 +3,11 @@ name: Manual workflow
 
 on:
   workflow_call:
+    secrets:
+      aws_access_key_id:
+        required: true
+      aws_secret_access_key:
+        required: true
     
     #inputs:
      # name:
